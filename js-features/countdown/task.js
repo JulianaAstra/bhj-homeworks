@@ -1,6 +1,9 @@
+const timer = document.getElementById('timer');
+
 const countdown = (start) => {
   const intervalId = setInterval ( () => {
     start--;
+    timer.textContent = start;
     if (start < 0) {
         clearInterval(intervalId);
         alert('Вы победили в конкурсе!');
@@ -33,5 +36,6 @@ const countdown2 = (start) => {
     }, 1000);
   };
 
-// countdown2(9);
+// countdown2(59);
+
 
