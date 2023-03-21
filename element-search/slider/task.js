@@ -1,63 +1,43 @@
-const slides = document.querySelectorAll('.slider__item');
+const slides = Array.from(document.querySelectorAll('.slider__item'));
 const arrowPrev = document.querySelector('.slider__arrow_prev');
 const arrowNext = document.querySelector('.slider__arrow_next');
-const dots = document.querySelectorAll('.slider__dot');
+const dots = Array.from(document.querySelectorAll('.slider__dot'));
 
-let count = 0;
-
-const moveForward = () => {
-    count++;
-    if (count >= slides.length) {
-        slides[count - 1].classList.remove('slider__item_active');
-        dots[count - 1].classList.remove('slider__dot_active');
-        count = 0;
-        slides[count].classList.add('slider__item_active');
-        dots[count].classList.add('slider__dot_active');
-    } else {
-        slides[count - 1].classList.remove('slider__item_active');
-        slides[count].classList.add('slider__item_active');
-        dots[count - 1].classList.remove('slider__dot_active');
-        dots[count].classList.add('slider__dot_active');
-    }
+const findActiveElem = function (elem) {
+    return elem.classList.contains('slider__item_active');
 }
 
-const moveBackward = () => {
-    count--;
+function setActiveImage (num) {
+    let count = num;
+    const activeSlidePosition = slides.findIndex(findActiveElem);
+    
+    slides[activeSlidePosition].classList.remove('slider__item_active');
+    dots[activeSlidePosition].classList.remove('slider__dot_active');
+
     if (count < 0) {
-        slides[count + 1].classList.remove('slider__item_active');
-        dots[count + 1].classList.remove('slider__dot_active');
         count = slides.length - 1;
-        slides[count].classList.add('slider__item_active');
-        dots[count].classList.add('slider__dot_active');
-    } else {
-        slides[count + 1].classList.remove('slider__item_active');
-        slides[count].classList.add('slider__item_active');
-        dots[count + 1].classList.remove('slider__dot_active');
-        dots[count].classList.add('slider__dot_active');
     }
-}
-
-const changePicture = (evt) => {   
-    const activePicture = document.querySelector('.slider__item_active');
-    const activeDot = document.querySelector('.slider__dot_active');
-    activePicture.classList.remove('slider__item_active');
-    let index = Array.from(dots).indexOf(evt.target);
-
-    slides[index].classList.add('slider__item_active');
-    activeDot.classList.remove('slider__dot_active');
-    dots[index].classList.add('slider__dot_active');
+    if (count >= slides.length) {
+        count = 0;
+    }
+    slides[count].classList.add('slider__item_active');
+    dots[count].classList.add('slider__dot_active');
 }
 
 arrowNext.addEventListener('click', () => {
-    moveForward();
+    let count = slides.findIndex(findActiveElem);
+    count++;
+    setActiveImage(count);
 });
 
 arrowPrev.addEventListener('click', () => {
-    moveBackward();
+    let count = slides.findIndex(findActiveElem);
+    count--;
+    setActiveImage(count);
 });
 
-dots.forEach(element => {
-    element.addEventListener('click', (evt) => {
-        changePicture(evt);
+dots.forEach((elem, idx) => {
+    elem.addEventListener('click', (evt) => {
+        setActiveImage(idx);
     });
 });
