@@ -9,3 +9,57 @@ body {
 .poll__title {
   margin-bottom: 20px;
 }
+
+.poll {
+  display: flex;
+  flex-direction: column;
+}
+
+.poll__answer {
+  margin: 5px;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal__content {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 200px;
+  overflow: auto;
+  background: #fff;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  display: block;
+  text-decoration: none;
+  background: rgb(146, 145, 214);
+  color: whitesmoke;
+  padding: 10px 20px;
+  border-radius: 2px;
+}
+
+.modal__message {
+  font-size: 20px;
+  margin-bottom: 35px;
+}
+
+.hidden {
+  display: none;
+}
