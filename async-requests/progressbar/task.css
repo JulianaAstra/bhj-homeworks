@@ -50,3 +50,9 @@ button {
 .input__wrapper-button:hover {
   background-color: #005ce6;
 }
+
+.success {
+  position: relative;
+  top: -10px;
+  margin-left: 15px;
+}
