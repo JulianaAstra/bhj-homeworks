@@ -1,6 +1,5 @@
 const pollTitle = document.querySelector('#poll__title');
 const buttonsContainer = document.querySelector('.poll__answers');
-// const answerButtons = Array.from(buttonsContainer.querySelectorAll('.poll__answer'));
 const modal = document.querySelector('#modal_success');
 const modalCloseButton = document.querySelector('.btn_success');
 
@@ -24,7 +23,7 @@ const onBtnContainerClick = (evt) => {
 const onCloseClick = (evt) => {
     modal.classList.add('hidden');
     modalClose.removeEventListener('click', onCloseClick);
-    modalCloseButtun.removeEventListener('click', onCloseClick);
+    modalCloseButton.removeEventListener('click', onCloseClick);
 }
 
 const drawButtons = (post, amount) => {
