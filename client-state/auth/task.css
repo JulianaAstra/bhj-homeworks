@@ -45,3 +45,14 @@
   display: block;
   text-align: center;
 }
+
+.btn__row span {
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 5px;
+  color: red;
+}
+
+.exit_button {
+  margin-top: 30px;
+}
