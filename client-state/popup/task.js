@@ -10,7 +10,7 @@ const onLoad = () => {
 
 const onCloseClick = () => {
     modalElement.classList.remove('modal_active');
-    document.cookie = 'modalClosed=true';
+    document.cookie = 'modalClosed=true; path=/; expires=Tue, 06 Feb 2024 00:00:00 GMT';
 }
 
 window.addEventListener('load', onLoad);
